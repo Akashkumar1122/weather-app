@@ -1,0 +1,365 @@
+*{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+  color: #fff;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.home_img img{
+  width: 100%;
+}
+
+.show-weather {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 10px;
+  background: #bbadad69;
+  backdrop-filter: blur(10px);
+  width: 57%;
+}
+.cloudSunIcon {
+  display: flex;
+  justify-content: center;
+}
+
+.UserInformation h3{
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  width: 50%;
+  margin: 30px auto;
+}
+
+.left-content img{
+  width: 100%;
+  filter: brightness(0.8);
+}
+
+.weather-contents{
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  gap: 20px;
+}
+
+.UserInformation p {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ------------------------ Loading animation css ----------------------- */
+
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 12em;
+  height: 10em;
+  font-size: 1em; /* control icon size here */
+}
+
+.cloud {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 3.6875em;
+  height: 3.6875em;
+  margin: -1.84375em;
+  background: #bebebe;
+  border-radius: 50%;
+  box-shadow:
+    -2.1875em 0.6875em 0 -0.6875em #bebebe,
+    2.0625em 0.9375em 0 -0.9375em #bebebe,
+    0 0 0 0.375em #fff,
+    -2.1875em 0.6875em 0 -0.3125em #fff,
+    2.0625em 0.9375em 0 -0.5625em #fff;
+}
+.cloud:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -0.5em;
+  display: block;
+  width: 4.5625em;
+  height: 1em;
+  background: #bebebe;
+  box-shadow: 0 0.4375em 0 -0.0625em #ffffff;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  margin: -1.25em;
+  background: rgb(235, 184, 65)   ;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.375em #fff;
+  animation: spin 12s infinite linear;
+}
+.rays {
+  position: absolute;
+  top: -2em;
+  left: 50%;
+  display: block;
+  width: 0.375em;
+  height: 1.125em;
+  margin-left: -0.1875em;
+  background: #fff;
+  border-radius: 0.25em;
+  box-shadow: 0 5.375em #fff;
+}
+.rays:before,
+.rays:after {
+  content: '';
+  position: absolute;
+  top: 0em;
+  left: 0em;
+  display: block;
+  width: 0.375em;
+  height: 1.125em;
+  transform: rotate(60deg);
+  transform-origin: 50% 3.25em;
+  background: #fff;
+  border-radius: 0.25em;
+  box-shadow: 0 5.375em #fff;
+}
+.rays:before {
+  transform: rotate(120deg);
+}
+.cloud + .sun {
+  margin: -2em 1em;
+}
+
+.rain,
+.lightning,
+.snow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 3.75em;
+  height: 3.75em;
+  margin: 0.375em 0 0 -2em;
+  background: transparent;
+}
+
+.rain:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 1.125em;
+  height: 1.125em;
+  margin: -1em 0 0 -0.25em;
+  background: #0cf;
+  border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
+  box-shadow:
+    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+    -1.375em -0.125em 0 rgba(255,255,255,0.2);
+  transform: rotate(-28deg);
+  animation: rain 3s linear infinite;
+}
+
+
+@keyframes cloud {
+0% { opacity: 0; }
+50% { opacity: 0.3; }
+100% {
+  opacity: 0;
+  transform: scale(0.5) translate(-200%, -3em);
+}
+}
+
+@keyframes rain {
+0% {
+  background: #0cf;
+  box-shadow:
+    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+    -1.375em -0.125em 0 #0cf;
+}
+25% {
+  box-shadow:
+    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+    -0.875em 1.125em 0 -0.125em #0cf,
+    -1.375em -0.125em 0 rgba(255,255,255,0.2);
+}
+50% {
+  background: rgba(255,255,255,0.3);
+  box-shadow:
+    0.625em 0.875em 0 -0.125em #0cf,
+    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+    -1.375em -0.125em 0 rgba(255,255,255,0.2);
+}
+100% {
+  box-shadow:
+    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+    -1.375em -0.125em 0 #0cf;
+}
+}
+/* Animation code eds */
+
+
+.details-box {
+  position: absolute;
+  top: 0;
+  right: 22px;
+  padding-top: 20px;
+}
+
+.details-box h3{
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: end;
+}
+
+.left-content {
+  position: relative;
+}
+
+.sunInfo {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding-top: 20px;
+}
+
+.sunInfo p {
+  color: #fff;
+  font-size: .9rem;
+  margin: 1px;
+}
+
+
+.show_time {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+
+.show_time p {
+  color: #fff;
+  font-size: larger;
+}
+
+.temprature_degree {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+.temprature_degree h3{
+  color: #fff;
+  font-size: 60px;
+  font-family: math;
+  font-weight: 400;
+  margin: 0;
+}
+
+span.degreeSym {
+  font-size: 18px;
+  position: absolute;
+  bottom: 55px;
+  right: 33px;
+}
+
+.digital-clock {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+}
+
+.digital-clock h3 {
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 5px;
+  font-family: math;
+  margin-bottom: 10px
+}
+
+/* search form css */
+input#user-city {
+  background: transparent;
+  border: unset;
+  border-bottom: 1px solid white;
+}
+
+input#user-city:focus-visible{
+  outline: unset;
+}
+
+button#search__weather {
+  background: transparent;
+  border: unset;
+  cursor: pointer;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+span.degree {
+  font-size: 25px;
+  position: absolute;
+  top: -6px;
+  right: 13px;
+}
+
+.detailValue.temp__val {
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.city-weather {
+  width: 80%;
+  margin: auto;
+}
+
+.weather_report .places-name h4{
+  text-align: center;
+}
+
+.rpDetails{
+  width: max-content;
+  margin: auto;
+}
+
+.description-weather p{
+  text-transform: capitalize;
+}
+
+#user-city{
+  padding-right: 30px;
+}
+
+#user-city::placeholder{
+  color: #bcbcbc;
+}
+
+.weatherDetail .detail {
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  margin-bottom: 12px;
+}
